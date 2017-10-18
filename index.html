@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <title>Nelson | Spotify Recommendations Jukebox</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="nelson.css"/>
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.js"></script>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  </head>
+  <body>
+    <div class="nelson">
+      <div id="notice"></div>
+      <div class="body">
+        <button class="btn btn-aubergine btn-lg" onclick="makePlaylist();">Make Playlist</button>
+        <div class="inline">
+          <h3>Current genres: <span id="current-genres"></span></h3>
+          <button class="btn btn-aubergine btn-sm" data-toggle="modal" data-target="#genre-select" onclick="getGenresList();">Choose genres</button>
+        </div>
+        <div>
+          <h5>Mode</h5>
+          <div class="checkbox-inline" onclick="getRecommendations();">
+            <label>
+              <input id="mode-major" type="checkbox" value="1" checked>
+              Major
+              <span class="control-indicator"></span>
+            </label>
+          </div>
+          <div class="checkbox-inline" onclick="getRecommendations();">
+            <label>
+              <input id="mode-minor" type="checkbox" value="0" checked>
+              Minor
+              <span class="control-indicator"></span>
+            </label>
+          </div>
+          <h5>Popularity</h5><div id="popularity-slider"></div>
+          <h5>Tempo (40-200bpm)</h5><div id="tempo-slider"></div>
+          <h5>Valence</h5><div id="valence-slider"></div>
+          <h5>Energy</h5><div id="energy-slider"></div>
+          <h5>Acousticness</h5><div id="acousticness-slider"></div>
+          <h5>Danceability</h5><div id="danceability-slider"></div>
+          <h5>Instrumentalness</h5><div id="instrumentalness-slider"></div>
+          <h5>Liveness</h5><div id="liveness-slider"></div>
+          <h5>Speechiness</h5><div id="speechiness-slider"></div>
+        </div>
+      </div>
+      <div id="tracks">
+        <h4>Select some genres to get recommendations</h4>
+        <!-- Tracks to be appended here -->
+      </div>
+    </div>
+
+    <div class="modal fade" id="genre-select">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Select seed genres</h4>
+          </div>
+          <div class="modal-body">
+            <div id="genreLimitAlert" class="alert alert-danger alert-dismissible" role="alert" style="display:none;">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              Oops! You can only select up to 5 genres.
+            </div>
+            <div id="genres-list" data-toggle="buttons">
+              <label class="btn btn-salmon btn-sm">
+                <!-- Buttons for each genre to be appended here -->
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-aubergine" data-dismiss="modal" onclick="getRecommendations();">Okay!</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->   
+    
+    <script src="./client.js"></script>
+  </body>
+</html>
+
