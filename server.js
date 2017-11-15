@@ -8,6 +8,23 @@ const spotifyBaseUrl = 'https://api.spotify.com/v1/';
 
 app.use(express.static(__dirname + '/'));
 
+app.get('/user', function(req, res) {
+
+  let token = req.query.token;
+
+  let requestURL = spotifyBaseUrl + 'me';
+
+  let options = {
+    url: requestURL,
+    headers: { 'Authorization': 'Bearer ' + token },
+    json: true
+  };
+
+  request.get(options, function(error, response, body) {
+    res.json(body);
+  });
+});
+
 app.get('/genres', function(req, res) {
 
   let token = req.query.token;

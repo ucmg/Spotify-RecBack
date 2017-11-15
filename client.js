@@ -34,6 +34,7 @@ if (!_token) {
 
 genreLimitAlert("off");
 setUpSliders();
+showUser();
 
 let deviceId;
 
@@ -111,6 +112,18 @@ function setUpSliders() {
       getRecommendations()
     }
   });
+}
+
+function showUser() {
+  $.get('/user?token=' + _token, function(user) {
+    console.log(user)
+  });
+}
+
+function logout() {
+  _token = null;
+  window.open('https://accounts.spotify.com/logout');
+  location.reload();
 }
 
 function getGenresList() {
