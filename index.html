@@ -15,10 +15,37 @@
       <div id="notice"></div>
       <div class="body">
         <button class="btn btn-aubergine btn-lg" onclick="makePlaylist();">Make Playlist</button>
-        <button class="btn btn-secondary btn-sm pull-right" onclick="logout();">Logout</button>
+        <span class="pull-right">
+          <span>Logged in as <span id="current-user"></span></span>
+          <button class="btn btn-secondary btn-sm" onclick="logout();">Logout</button>
+        </span>
         <div class="inline">
           <h3>Current genres: <span id="current-genres"></span></h3>
           <button class="btn btn-aubergine btn-sm" data-toggle="modal" data-target="#genre-select" onclick="getGenresList();">Choose genres</button>
+        </div>
+        <div>
+          <h3 clas>Playback:</h3>
+          <div class="radio-inline">
+            <label>
+              <input type="radio" name="playback-setting" value="0" checked>
+              In Browser
+              <span class="control-indicator"></span>
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              <input type="radio" name="playback-setting" value="1" >
+              In Spotify Client
+              <span class="control-indicator"></span>
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              <input type="radio" name="playback-setting" value="2" >
+              No Playback
+              <span class="control-indicator"></span>
+            </label>
+          </div>
         </div>
         <div>
           <h5>Mode</h5>

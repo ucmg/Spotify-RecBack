@@ -116,7 +116,7 @@ function setUpSliders() {
 
 function showUser() {
   $.get('/user?token=' + _token, function(user) {
-    console.log(user)
+    $('#current-user').text(user.id);
   });
 }
 
