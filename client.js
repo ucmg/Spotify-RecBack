@@ -17,7 +17,7 @@ const authEndpoint = 'https://accounts.spotify.com/authorize';
 
 // Replace with your app's client ID, redirect URI and desired scopes
 const clientId = '593219e3509a40e499f266c2c4fd6f5c';
-const redirectUri = 'https://nelson-wpsdk.glitch.me/';
+const redirectUri = 'https://nelson2.glitch.me/';
 const scopes = [
   'streaming',
   'user-read-birthdate',
@@ -37,7 +37,7 @@ setUpSliders();
 showUser();
 
 let deviceId;
-let playbackSetting = 0;
+let playbackSetting = 1;
 
 function onSpotifyPlayerAPIReady() {
   
@@ -130,10 +130,7 @@ function logout() {
 function setPlaybackSetting(setting) {
   playbackSetting = setting;
   
-  if (setting == 1) {
-    deviceId = null;
-  }
-  if (setting == 2) {
+  if (setting == 0) {
     deviceId = null;
     pause();
   }
@@ -307,7 +304,7 @@ function makePlaylist() {
 }
 
 function play(track) {
-  if(playbackSetting != 2) {
+  if(playbackSetting != 0) {
     $.post('/play?tracks=' + track + '&device_id=' + deviceId + '&token=' + _token);
   }
 }
