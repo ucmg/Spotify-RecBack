@@ -37,6 +37,7 @@ setUpSliders();
 showUser();
 
 let deviceId;
+let playbackSetting = 0;
 
 function onSpotifyPlayerAPIReady() {
   
@@ -124,6 +125,18 @@ function logout() {
   _token = null;
   window.open('https://accounts.spotify.com/logout');
   location.reload();
+}
+
+function setPlaybackSetting(setting) {
+  playbackSetting = setting;
+  
+  if (setting == 1) {
+    deviceId = null;
+  }
+  if (setting == 2) {
+    deviceId = null;
+    pause();
+  }
 }
 
 function getGenresList() {
@@ -294,7 +307,13 @@ function makePlaylist() {
 }
 
 function play(track) {
-  $.post('/play?tracks=' + track + '&device_id=' + deviceId + '&token=' + _token);
+  if(playbackSetting != 2) {
+    $.post('/play?tracks=' + track + '&device_id=' + deviceId + '&token=' + _token);
+  }
+}
+
+function pause() {
+  $.post('/pause?token=' + _token);
 }
 
 function remove(track) {

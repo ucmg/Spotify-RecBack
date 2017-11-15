@@ -164,5 +164,22 @@ app.post('/play', function(req, res) {
   });
 });
 
+app.post('/pause', function(req, res) {
+  let token = req.query.token;
+
+  let requestURL = spotifyBaseUrl + 'me/player/pause';
+
+  let options = {
+    url: requestURL,
+    headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
+    json: true,
+    dataType: 'json',
+  };
+
+  request.put(options, function(error, response, body) {
+    res.sendStatus(200);
+  });
+});
+
 console.log('Listening on 8888');
 app.listen(8888);
