@@ -134,6 +134,10 @@ function setPlaybackSetting(setting) {
     deviceId = null;
     pause();
   }
+  
+  if (setting == 2) {
+    getDevices();
+  }
 }
 
 function getDevices() {
@@ -145,11 +149,12 @@ function getDevices() {
   //   </label>
   // </div>
   
-  $('#devices-list').empty();
+  //$('#devices-list').empty();
   $.get('/devices?token=' + _token, function(devices) {
+    console.log(devices)
     devices.forEach(function(device) {
-      let genreButtonElement = '<div class="radio" data-dismiss="modal" onclick="setDevice(' + )"><label class="btn btn-salmon btn-sm"><input type="checkbox" value="' + genre + '">' + genre + '</label>';
-      $('#genres-list').append(genreButtonElement);
+      let deviceRadioElement = '<div class="radio" onclick="setDevice(' + device.id + ')"><label><input type="radio" name="device">' + device.name + '<span class="control-indicator"></span></label></div>';
+      $('#devices-list').append(deviceRadioElement);
     });
   });
 }

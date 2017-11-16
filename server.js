@@ -25,6 +25,23 @@ app.get('/user', function(req, res) {
   });
 });
 
+app.get('/devices', function(req, res) {
+
+  let token = req.query.token;
+
+  let requestURL = spotifyBaseUrl + 'me/player/devices';
+
+  let options = {
+    url: requestURL,
+    headers: { 'Authorization': 'Bearer ' + token },
+    json: true
+  };
+
+  request.get(options, function(error, response, body) {
+    res.json(body.devices);
+  });
+});
+
 app.get('/genres', function(req, res) {
 
   let token = req.query.token;
