@@ -15,14 +15,14 @@
       <div id="notice"></div>
       
       <div class="body">
-        <button class="btn btn-aubergine btn-lg" onclick="makePlaylist();">Make Playlist</button>
+        <button class="btn btn-aubergine btn-lg space-after" onclick="makePlaylist();">Make Playlist</button>
         
         <span class="pull-right">
           <span>Logged in as <span id="current-user"></span></span>
           <button class="btn btn-secondary btn-sm" onclick="logout();">Logout</button>
         </span>
         
-        <div class="inline">
+        <div class="inline space-after">
           <h3>Current genres: <span id="current-genres"></span></h3>
           <button class="btn btn-aubergine btn-sm" data-toggle="modal" data-target="#genre-select" onclick="getGenresList();">Choose genres</button>
         </div>

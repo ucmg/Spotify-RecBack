@@ -138,12 +138,12 @@ function setPlaybackSetting(setting) {
   if (setting == 0) {
     deviceId = null;
     pause();
-    localStorage.setItem('NelsonCurrentPlayback', 'None');
+    $('#current-playback').text('None');
   }
   
   if (setting == 1) {
     setDevice(localStorage.getItem('nelsonBrowserDeviceID'));
-      $('#current-playback').text('IBrowser');
+    $('#current-playback').text('In Browser');
   }
   
   if (setting == 2) {
@@ -153,7 +153,7 @@ function setPlaybackSetting(setting) {
 
 function setDevice(id, name) {
   deviceId = id;
-  localStorage.setItem('NelsonCurrentPlayback', name);
+  $('#current-playback').text(name);
   $.post('/transfer?device_id=' + deviceId + '&token=' + _token);
 }
 
