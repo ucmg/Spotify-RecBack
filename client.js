@@ -1,3 +1,4 @@
+// Check hash for token
 const hash = window.location.hash
 .substring(1)
 .split('&')
@@ -52,18 +53,16 @@ function onSpotifyPlayerAPIReady() {
     volume: 0.8
   });
 
-  console.log(player._options.name)
-
   player.on('ready', function(data) {
     deviceId = data.device_id;
     localStorage.setItem('nelsonBrowserDeviceID', data.device_id);
   });
 
   player.on('player_state_changed', function(data) {
-    console.log(data)
-    let currentTrack = data.track_window.current_track.uri;
-    console.log(currentTrack)
-    updateCurrentlyPlaying(currentTrack);
+    if(data) {
+      let currentTrack = data.track_window.current_track.uri;
+      updateCurrentlyPlaying(currentTrack);
+    }  
   });
 
   player.connect();
@@ -292,7 +291,6 @@ function getRecommendations() {
     $('#tracks').empty();
     let trackIds = [];
     let trackUris = [];
-    console.log(data.tracks)
     if(data.tracks) {
       if(data.tracks.length > 0) {
         data.tracks.forEach(function(track) {
@@ -348,7 +346,6 @@ function pause() {
 }
 
 function remove(track) {
-  console.log("remove")
   let trackList = localStorage.getItem('currentNelsonTracks').split(',');
   trackList = trackList.filter(item => item != track);
   localStorage.setItem('currentNelsonTracks', trackList.join());
