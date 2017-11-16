@@ -32,13 +32,16 @@ if (!_token) {
   window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token`;
 }
 
+// Page setup
 genreLimitAlert("off");
 setUpSliders();
 showUser();
+getDevices();
 
 let deviceId;
 let playbackSetting = 1;
 
+// Initialise Web Playback SDK
 function onSpotifyPlayerAPIReady() {
   
   let player = new Spotify.Player({
@@ -57,6 +60,7 @@ function onSpotifyPlayerAPIReady() {
   });
 
   player.on('player_state_changed', function(data) {
+    console.log(data)
     let currentTrack = data.track_window.current_track.uri;
     console.log(currentTrack)
     updateCurrentlyPlaying(currentTrack);
@@ -141,7 +145,6 @@ function setPlaybackSetting(setting) {
   }
   
   if (setting == 2) {
-    getDevices();
     $('#device-select').modal('show');
   }
 }
@@ -289,17 +292,23 @@ function getRecommendations() {
     $('#tracks').empty();
     let trackIds = [];
     let trackUris = [];
+    console.log(data.tracks)
     if(data.tracks) {
-      data.tracks.forEach(function(track) {
-        trackIds.push(track.id);
-        trackUris.push(track.uri);
-      });
-      localStorage.setItem('currentNelsonTracks', trackUris.join());
-      renderTracks(trackIds);
-      play(trackUris.join());
+      if(data.tracks.length > 0) {
+        data.tracks.forEach(function(track) {
+          trackIds.push(track.id);
+          trackUris.push(track.uri);
+        });
+        localStorage.setItem('currentNelsonTracks', trackUris.join());
+        renderTracks(trackIds);
+        play(trackUris.join());
+      }
+      else {
+        $('#tracks').append('<h2>No results. Try a broader search.</h2>')
+      }
     }
     else {
-      $('#tracks').append('<h2>No results.</h2>')
+      $('#tracks').append('<h2>No results. Select some genres first.</h2>')
     }
   });
 }
