@@ -38,12 +38,29 @@ app.get('/devices', function(req, res) {
   };
 
   request.get(options, function(error, response, body) {
-    console.log(body.devices)
-    res.json(body.devices);
+    res.send(body.devices);
   });
 });
 
-app.po
+app.post('/transfer', function(req, res) { 
+
+  let device_id = req.query.device_id;
+  let token = req.query.token;
+
+  let requestURL = spotifyBaseUrl + 'me/player';
+  
+  let options = {
+    url: requestURL,
+    headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
+    json: true,
+    dataType: 'json',
+    body: { "device_ids": [device_id] }
+  };
+  
+  request.put(options, function(error, response, body) {
+    res.sendStatus(200);
+  });
+});
 
 app.get('/genres', function(req, res) {
 

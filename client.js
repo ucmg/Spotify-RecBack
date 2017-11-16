@@ -53,7 +53,7 @@ function onSpotifyPlayerAPIReady() {
 
   player.on('ready', function(data) {
     deviceId = data.device_id;
-    localStorage.set('nelsonBrowserDeviceID', data.device_id);
+    localStorage.setItem('nelsonBrowserDeviceID', data.device_id);
   });
 
   player.on('player_state_changed', function(data) {
@@ -137,13 +137,12 @@ function setPlaybackSetting(setting) {
   }
   
   if (setting == 1) {
-    deviceId = localStorage.get('nelsonBrowserDeviceID');
-    transferPlayback(deviceId);
+    setDevice(localStorage.getItem('nelsonBrowserDeviceID'));
   }
   
   if (setting == 2) {
+    getDevices();
     $('#device-select').modal('show');
-    transferPlayback(deviceId);
   }
 }
 
@@ -151,8 +150,6 @@ function setDevice(id) {
   deviceId = id;
   $.post('/transfer?device_id=' + deviceId + '&token=' + _token);
 }
-
-getDevices();
 
 function getDevices() { 
   $('#devices-list').empty();
