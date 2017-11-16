@@ -136,20 +136,13 @@ function setPlaybackSetting(setting) {
   }
   
   if (setting == 2) {
+    $('#device-select').modal('show'); 
     getDevices();
   }
 }
 
-function getDevices() {
-  // <div class="radio" data-dismiss="modal" onclick="setPlaybackSetting(1)">
-  //   <label>
-  //     <input type="radio" name="device" value="1">
-  //     In Browser
-  //     <span class="control-indicator"></span>
-  //   </label>
-  // </div>
-  
-  //$('#devices-list').empty();
+function getDevices() { 
+  $('#devices-list').empty();
   $.get('/devices?token=' + _token, function(devices) {
     console.log(devices)
     devices.forEach(function(device) {
