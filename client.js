@@ -136,6 +136,24 @@ function setPlaybackSetting(setting) {
   }
 }
 
+function getDevices() {
+  // <div class="radio" data-dismiss="modal" onclick="setPlaybackSetting(1)">
+  //   <label>
+  //     <input type="radio" name="device" value="1">
+  //     In Browser
+  //     <span class="control-indicator"></span>
+  //   </label>
+  // </div>
+  
+  $('#devices-list').empty();
+  $.get('/devices?token=' + _token, function(devices) {
+    devices.forEach(function(device) {
+      let genreButtonElement = '<div class="radio" data-dismiss="modal" onclick="setDevice(' + )"><label class="btn btn-salmon btn-sm"><input type="checkbox" value="' + genre + '">' + genre + '</label>';
+      $('#genres-list').append(genreButtonElement);
+    });
+  });
+}
+
 function getGenresList() {
   $('#genres-list').empty();
   $.get('/genres?token=' + _token, function(genres) {
