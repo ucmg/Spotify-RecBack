@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+h3 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
 .inline * {
   display: inline-block;
 }
@@ -79,7 +84,7 @@
   border: 1px #ccc solid;
 }
 
-#current-user {
+#current-user, #current-playback {
   color: #f573a0;
   margin-right: 20px;
 }
