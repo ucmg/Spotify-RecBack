@@ -38,9 +38,12 @@ app.get('/devices', function(req, res) {
   };
 
   request.get(options, function(error, response, body) {
+    console.log(body.devices)
     res.json(body.devices);
   });
 });
+
+app.po
 
 app.get('/genres', function(req, res) {
 

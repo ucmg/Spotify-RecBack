@@ -53,6 +53,7 @@ function onSpotifyPlayerAPIReady() {
 
   player.on('ready', function(data) {
     deviceId = data.device_id;
+    localStorage.set('nelsonBrowserDeviceID', data.device_id);
   });
 
   player.on('player_state_changed', function(data) {
@@ -135,18 +136,29 @@ function setPlaybackSetting(setting) {
     pause();
   }
   
+  if (setting == 1) {
+    deviceId = localStorage.get('nelsonBrowserDeviceID');
+    transferPlayback(deviceId);
+  }
+  
   if (setting == 2) {
-    $('#device-select').modal('show'); 
-    getDevices();
+    $('#device-select').modal('show');
+    transferPlayback(deviceId);
   }
 }
+
+function setDevice(id) {
+  deviceId = id;
+  $.post('/transfer?device_id=' + deviceId + '&token=' + _token);
+}
+
+getDevices();
 
 function getDevices() { 
   $('#devices-list').empty();
   $.get('/devices?token=' + _token, function(devices) {
-    console.log(devices)
     devices.forEach(function(device) {
-      let deviceRadioElement = '<div class="radio" onclick="setDevice(' + device.id + ')"><label><input type="radio" name="device">' + device.name + '<span class="control-indicator"></span></label></div>';
+      let deviceRadioElement = '<div class="radio" onclick="setDevice(\'' + device.id + '\')"><label><input type="radio" name="device">' + device.name + '<span class="control-indicator"></span></label></div>';
       $('#devices-list').append(deviceRadioElement);
     });
   });
