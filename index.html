@@ -29,6 +29,9 @@
         </div>
         
         <span>Current Playback: <span id="current-playback"></span></span>
+        <p style="font-size:11px">
+          In Browser Playback is not supported in Safari or on mobile devices.
+        </p>
         <!-- Playback Setting -->
         <div class="inline">
           <h3 class="spacer">Playback</h3>
@@ -71,15 +74,18 @@
               <span class="control-indicator"></span>
             </label>
           </div>
-          <h5>Popularity</h5><div id="popularity-slider"></div>
+          <h5>Popularity (0-100)</h5><div id="popularity-slider"></div>
           <h5>Tempo (40-200bpm)</h5><div id="tempo-slider"></div>
-          <h5>Valence</h5><div id="valence-slider"></div>
+          <h5>Valence ("positivity" of the track)</h5><div id="valence-slider"></div>
           <h5>Energy</h5><div id="energy-slider"></div>
           <h5>Acousticness</h5><div id="acousticness-slider"></div>
           <h5>Danceability</h5><div id="danceability-slider"></div>
           <h5>Instrumentalness</h5><div id="instrumentalness-slider"></div>
           <h5>Liveness</h5><div id="liveness-slider"></div>
           <h5>Speechiness</h5><div id="speechiness-slider"></div>
+          <h6>
+            Read about what all these audio features mean <a href="https://beta.developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/#audio-features-object">here</a>.
+          </h6>
         </div>
       </div>
       <div id="tracks">
