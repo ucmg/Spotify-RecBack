@@ -8,19 +8,26 @@
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.js"></script>
+    
+    <!-- Include the Web Playback SDK -->
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
   </head>
   <body>
     <div class="nelson">
+      
+      <!-- Twitter Follow Button -->
       <div style="position:absolute;top:0;right:0;margin:20px;">
         <a href="https://twitter.com/imariari?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @imariari</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
+      
+      <!-- Alerts -->
       <p>
         <i style="font-size:11px">This is a personal hack project on Spotify's public APIs and SDKs and does not represent Spotify.</i>
       </p>
       <div class="alert alert-info" role="alert">Like the project? It uses the Spotify <a href="https://beta.developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/">Recommendations API</a> and <a href="https://beta.developer.spotify.com/documentation/web-playback-sdk/">Web Playback SDK</a>. Try it yourself!</div>
       <div id="notice"></div>
       
+      <!-- Main App -->
       <div class="body">
         <button class="btn btn-aubergine btn-lg space-after" onclick="makePlaylist();">Make Playlist</button>
         
@@ -93,26 +100,34 @@
             Read about what all these audio features mean <a href="https://beta.developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/#audio-features-object">here</a>.
           </h6>
         </div>
-      </div>
+        
+      </div><!-- /.body -->
+      
       <div id="tracks">
         <h4>Select some genres to get recommendations</h4>
         <!-- Tracks to be appended here -->
       </div>
-    </div>
+      
+    </div><!-- /.nelson -->
     
     <div class="alert alert-info" role="alert">My source code is on <a href="https://glitch.com/edit/#!/nelson">Glitch!</a></div>
 
+    <!-- Modals! -->
+    
     <div class="modal fade" id="genre-select">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title">Select seed genres</h4>
+            <p>
+              Note: genres do not combine (ie. Jazz + Pop will not give you Jazz-Pop, it will give tracks that are <i>either</i> Jazz or Pop)
+            </p>
           </div>
           <div class="modal-body">
             <div id="genreLimitAlert" class="alert alert-danger alert-dismissible" role="alert" style="display:none;">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              Oops! You can only select up to 5 genres.
+              Oops! You may only select up to 5 genres.
             </div>
             <div id="genres-list" data-toggle="buttons">
               <label class="btn btn-salmon btn-sm">
