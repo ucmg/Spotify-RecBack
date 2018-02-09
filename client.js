@@ -13,7 +13,6 @@ window.location.hash = '';
 
 // Set token
 let _token = hash.access_token;
-console.log(_token)
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 
@@ -36,16 +35,15 @@ if (!_token) {
 
 else {
 
-let deviceId;
-let playbackSetting;
+  let deviceId;
+  let playbackSetting;
 
-// Page setup
-genreLimitAlert("off");
-getGenresList();
-setUpSliders();
-showUser();
-getDevices();
-setPlaybackSetting(1);
+  // Page setup
+  genreLimitAlert("off");
+  setUpSliders();
+  showUser();
+  getDevices();
+  setPlaybackSetting(1);
 }
 
 // Initialise Web Playback SDK
