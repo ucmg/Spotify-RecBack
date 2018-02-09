@@ -40,6 +40,7 @@ else {
 
   // Page setup
   genreLimitAlert("off");
+  getGenresList();
   setUpSliders();
   showUser();
   getDevices();
