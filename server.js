@@ -28,6 +28,7 @@ app.get('/user', function(req, res) {
 app.get('/devices', function(req, res) {
 
   let token = req.query.token;
+  console.log(token)
 
   let requestURL = spotifyBaseUrl + 'me/player/devices';
 
@@ -39,6 +40,7 @@ app.get('/devices', function(req, res) {
 
   request.get(options, function(error, response, body) {
     res.send(body.devices);
+    console.log(body.devices);
   });
 });
 
@@ -65,6 +67,7 @@ app.post('/transfer', function(req, res) {
 app.get('/genres', function(req, res) {
 
   let token = req.query.token;
+  console.log(token)
 
   let requestURL = spotifyBaseUrl + 'recommendations/available-genre-seeds';
 
