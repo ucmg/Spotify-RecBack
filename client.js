@@ -25,6 +25,7 @@ const scopes = [
   'user-read-email',
   'user-read-private',
   'playlist-modify-public',
+  'user-read-playback-state',
   'user-modify-playback-state'
 ];
 
