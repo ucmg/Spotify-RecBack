@@ -123,6 +123,10 @@ function setUpSliders() {
       getRecommendations()
     }
   });
+  
+  $('#number-tracks').on('change', function() {
+    getRecommendations();
+  });
 }
 
 function showUser() {
@@ -282,6 +286,9 @@ function getSliderValues() {
 
 function getRecommendations() {
   
+  // Get number of tracks
+  let limit = $('#number-tracks').value;
+  
   // Get selected genres
   let genres = [];
   $('#genres-list input:checked').each(function() {
@@ -296,7 +303,7 @@ function getRecommendations() {
   localStorage.setItem('currentNelsonFeatures', JSON.stringify(audioFeatures));
   
   // Send the request
-  $.get('/recommendations?limit=20&seed_genres=' + genresString + '&' + $.param(audioFeatures) + '&token=' + _token, function(data) {
+  $.get('/recommendations?limit=' + limit + '&seed_genres=' + genresString + '&' + $.param(audioFeatures) + '&token=' + _token, function(data) {
     $('#tracks').empty();
     let trackIds = [];
     let trackUris = [];
