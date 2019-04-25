@@ -287,7 +287,7 @@ function getSliderValues() {
 function getRecommendations() {
   
   // Get number of tracks
-  let limit = $('#number-tracks').value;
+  let limit = +$('#number-tracks').val();
   
   // Get selected genres
   let genres = [];

@@ -81,8 +81,6 @@ app.get('/genres', function(req, res) {
 
 app.get('/recommendations', function(req, res) {
   
-  console.log(req)
-  
   // Get token and remove from query object
   let token = req.query.token;
   delete req.query.token;
