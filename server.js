@@ -87,7 +87,7 @@ app.get('/recommendations', function(req, res) {
 
   let requestURL = spotifyBaseUrl + 'recommendations?' + 
   querystring.stringify({
-    limit: 20,
+    limit: req.query.limit,
     market: 'from_token'
   }) + '&' +
   querystring.stringify(req.query);

@@ -296,7 +296,7 @@ function getRecommendations() {
   localStorage.setItem('currentNelsonFeatures', JSON.stringify(audioFeatures));
   
   // Send the request
-  $.get('/recommendations?seed_genres=' + genresString + '&' + $.param(audioFeatures) + '&token=' + _token, function(data) {
+  $.get('/recommendations?limit=20&seed_genres=' + genresString + '&' + $.param(audioFeatures) + '&token=' + _token, function(data) {
     $('#tracks').empty();
     let trackIds = [];
     let trackUris = [];
