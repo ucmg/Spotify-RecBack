@@ -371,3 +371,13 @@ function remove(track) {
   delete element;
 }
 
+
+function genreGroupsBeta() {
+  $('#genres-list').empty();
+  let genreGroupButtonElement = '<label class="btn btn-salmon btn-sm"><input type="checkbox" value="pop,happy,road-trip,power-pop"></label>';
+  $('#genres-list').append(genreGroupButtonElement);
+  let genreGroupButtonElement = '<label class="btn btn-salmon btn-sm"><input type="checkbox" value="rock,hard-rock,punk-rock,alt-rock,rock-n-roll">Rock</label>';
+  $('#genres-list').append(genreGroupButtonElement);
+  let genreGroupButtonElement = '<label class="btn btn-salmon btn-sm"><input type="checkbox" value="dance,edm,dubstep,house">Dance/EDM</label>';
+  $('#genres-list').append(genreGroupButtonElement);
+}
