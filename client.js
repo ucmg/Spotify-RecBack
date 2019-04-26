@@ -75,7 +75,7 @@ function onSpotifyPlayerAPIReady() {
 }
 
 // Dark mode toggle
-$('#darkmode').click(function() {
+$('#darkmode-button').click(function() {
   $('body').toggleClass('darkmode');
 });
 

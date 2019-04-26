@@ -163,7 +163,7 @@ h3 {
   background-color: #f573a0;
   width: 70px;
   height: 70px;
-  border-radius: 70px;
+  border-radius: 50%;
   border: none;
   box-shadow: 0 6px 10px 0 #666;
   transition: all 0.1s ease-in-out;
@@ -179,6 +179,20 @@ h3 {
 
 
 /* Dark mode */
+
+#darkmode-button {
+  padding: 5px;
+  background: #f573a0;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.darkmode-image {
+
+}
 
 .darkmode,
 .darkmode .modal-content {
