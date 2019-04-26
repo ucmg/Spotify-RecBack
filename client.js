@@ -74,6 +74,11 @@ function onSpotifyPlayerAPIReady() {
   player.connect();
 }
 
+// Dark mode toggle
+$('#darkmode').click(function() {
+  $('body').toggleClass('darkmode');
+});
+
 function genreLimitAlert(state) {
   if(state == "on") {
     $('#genreLimitAlert').show();

@@ -85,7 +85,7 @@ h3 {
 }
 
 .nelson .body {
-  width: 80%;
+  width: 90%;
   padding: 30px;
   border: 1px #ccc solid;
 }
@@ -175,4 +175,17 @@ h3 {
 .floating-button:hover {
   box-shadow: 0 6px 14px 0 #666;
   transform: scale(1.05);
+}
+
+
+/* Dark mode */
+
+.darkmode,
+.darkmode .modal-content {
+  background-color: #222;
+  color: white;
+}
+
+.darkmode .track-element:hover {
+  background-color: #333;
 }
