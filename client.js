@@ -17,8 +17,8 @@ let _token = hash.access_token;
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 
 // Replace with your app's client ID, redirect URI and desired scopes
-const clientId = '593219e3509a40e499f266c2c4fd6f5c';
-const redirectUri = 'https://nelson.glitch.me/';
+const clientId = '6e7f3b9e99a74c229739e34924f39aca';
+const redirectUri = 'https://labs.ucmg.ml/Spotify-RecBack/';
 const scopes = [
   'streaming',
   'user-read-birthdate',
