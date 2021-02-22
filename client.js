@@ -18,7 +18,7 @@ const authEndpoint = 'https://accounts.spotify.com/authorize';
 
 // Replace with your app's client ID, redirect URI and desired scopes
 const clientId = '6e7f3b9e99a74c229739e34924f39aca';
-const redirectUri = 'https://labs.ucmg.ml/Spotify-RecBack/#';
+const redirectUri = 'https://labs.ucmg.ml/Spotify-RecBack/callback';
 const scopes = [
   'streaming',
   'user-read-email',
