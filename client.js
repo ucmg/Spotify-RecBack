@@ -21,7 +21,6 @@ const clientId = '6e7f3b9e99a74c229739e34924f39aca';
 const redirectUri = 'https://labs.ucmg.ml/Spotify-RecBack/';
 const scopes = [
   'streaming',
-  'user-read-birthdate',
   'user-read-email',
   'user-read-private',
   'playlist-modify-public',
